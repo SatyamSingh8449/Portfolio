@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0xShad0w | Cybersecurity Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #040410;
+            --bg-secondary: #0a0a1a;
+            --text-primary: #e6e6f0;
+            --text-accent: #00ffff;
+            --accent-secondary: #7f00ff;
+            --border-color: #1a1a3a;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .matrix-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+        }
+        .wrapper {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--text-accent);
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .profile-image:hover {
+            transform: rotate(360deg);
+        }
+        .header-content h1 {
+            color: var(--text-accent);
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .header-content .subtitle {
+            color: var(--accent-secondary);
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+        .nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(to right, var(--text-accent), var(--accent-secondary));
+            transition: width 0.3s ease;
+        }
+        .nav a:hover {
+            color: var(--text-accent);
+        }
+        .nav a:hover::after {
+            width: 100%;
+        }
+        .section {
+            background: linear-gradient(145deg, rgba(10, 10, 26, 0.8), rgba(15, 15, 40, 0.8));
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 50px;
+            margin-top: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--text-accent), var(--accent-secondary));
+        }
+        .section-title {
+            color: var(--text-accent);
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--text-accent), var(--accent-secondary));
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: rgba(15, 15, 40, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, 
+                rgba(0, 255, 255, 0.1) 0%, 
+                transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.1);
+        }
+        .project-card h3 {
+            color: var(--text-accent);
+            margin-bottom: 15px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            padding: 30px 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .social-links a {
+            color: var(--text-primary);
+            font-size: 30px;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--text-accent);
+            transform: scale(1.3) rotate(360deg);
+        }
+        @media (max-width: 768px) {
+            .header, .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrixBackground" class="matrix-background"></canvas>
+    <div class="wrapper">
+        <header class="header">
+            <div class="profile-section">
+                <img src="Images/shadow.png" alt="0xShad0w Profile" class="profile-image">
+                <div class="header-content">
+                    <h1>0xShad0w</h1>
+                    <div class="subtitle">Cybersecurity Research & Innovation</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="#about">About</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#projects">Projects</a>
+                <a href="#research">Research</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <section id="about" class="section">
+            <h2 class="section-title">About Me</h2>
+            <p>Advanced cybersecurity researcher pushing the boundaries of digital defense. Specializing in sophisticated threat intelligence, cutting-edge malware analysis, and strategic penetration testing. My work bridges the gap between theoretical research and practical security solutions.</p>
+        </section>
+
+        <section id="expertise" class="section">
+            <h2 class="section-title">Core Expertise</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Threat Intelligence</h3>
+                    <p>Developing advanced predictive models for emerging cyber threats using machine learning and complex data correlation techniques.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Malware Reverse Engineering</h3>
+                    <p>Sophisticated static and dynamic analysis of complex malware ecosystems, uncovering intricate behavioral patterns and attack vectors.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Cyber Defense Strategies</h3>
+                    <p>Designing adaptive security architectures that proactively anticipate and mitigate sophisticated cyber threats.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2 class="section-title">Signature Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Quantum Threat Analyzer</h3>
+                    <p>Next-generation malware analysis platform leveraging quantum computing principles to detect and neutralize advanced persistent threats.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Neural Cyber Defense Network</h3>
+                    <p>AI-driven security system that learns and adapts in real-time to evolving cyber threat landscapes.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Global Threat Correlation Engine</h3>
+                    <p>Comprehensive threat intelligence platform providing real-time global cyber threat mapping and predictive analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:satyamsingh8449@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Matrix Background Effect
+        const canvas = document.getElementById('matrixBackground');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(10, 10, 26, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ffff';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+
+        function animateMatrix() {
+            drawMatrix();
+            requestAnimationFrame(animateMatrix);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        animateMatrix();
+    </script>
+</body>
+</html>
