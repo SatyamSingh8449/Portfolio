@@ -183,6 +183,66 @@
             color: var(--text-accent);
             margin-bottom: 15px;
         }
+        .blog-card {
+            background: rgba(15, 15, 40, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, 
+                rgba(0, 255, 255, 0.1) 0%, 
+                transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .blog-card:hover::before {
+            opacity: 1;
+        }
+        .blog-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.1);
+        }
+        .blog-card h3 {
+            color: var(--text-accent);
+            margin-bottom: 15px;
+        }
+        .blog-meta {
+            color: var(--accent-secondary);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .blog-excerpt {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .read-more {
+            align-self: flex-start;
+            color: var(--text-accent);
+            text-decoration: none;
+            border: 1px solid var(--text-accent);
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .read-more:hover {
+            background-color: var(--text-accent);
+            color: var(--bg-primary);
+        }
         .social-links {
             display: flex;
             justify-content: center;
@@ -269,6 +329,36 @@
                 <div class="project-card">
                     <h3>Global Threat Correlation Engine</h3>
                     <p>Comprehensive threat intelligence platform providing real-time global cyber threat mapping and predictive analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="section">
+            <h2 class="section-title">Research & Publications</h2>
+            <div class="project-grid">
+                <div class="blog-card">
+                    <h3>Zero-Day Vulnerability Detection Using Neural Networks</h3>
+                    <div class="blog-meta">Published: March 2, 2025 | Category: Threat Research</div>
+                    <div class="blog-excerpt">
+                        <p>Exploring novel applications of deep learning architectures in identifying previously unknown software vulnerabilities. This research presents a groundbreaking approach that combines static code analysis with dynamic behavioral monitoring to detect potential zero-day exploits before they can be weaponized.</p>
+                    </div>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+                <div class="blog-card">
+                    <h3>Advanced Polymorphic Malware Analysis Techniques</h3>
+                    <div class="blog-meta">Published: February 18, 2025 | Category: Malware Analysis</div>
+                    <div class="blog-excerpt">
+                        <p>An in-depth examination of cutting-edge methods for analyzing shape-shifting malware that evades traditional detection. This paper explores innovative approaches to identifying core behavioral patterns that persist despite sophisticated obfuscation techniques employed by modern threat actors.</p>
+                    </div>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+                <div class="blog-card">
+                    <h3>Post-Quantum Cryptography: Preparing for the Next Threat Horizon</h3>
+                    <div class="blog-meta">Published: January 24, 2025 | Category: Cryptography</div>
+                    <div class="blog-excerpt">
+                        <p>A comprehensive analysis of quantum-resistant cryptographic algorithms and implementation strategies for critical infrastructure. This research addresses the imminent threat quantum computing poses to current encryption standards and provides a roadmap for organizations to transition to quantum-safe security protocols.</p>
+                    </div>
+                    <a href="#" class="read-more">Read More</a>
                 </div>
             </div>
         </section>
