@@ -270,6 +270,60 @@
                 align-items: center;
             }
         }
+		.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.section-read-more {
+    color: var(--text-accent);
+    text-decoration: none;
+    border: 1px solid var(--text-accent);
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-read-more:hover {
+    background-color: var(--text-accent);
+    color: var(--bg-primary);
+}
+.tag-container {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}
+
+.content-tag {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.4em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.content-tag.corporate {
+    background-color: rgba(0, 255, 255, 0.2);
+    color: var(--text-accent);
+    border: 1px solid var(--text-accent);
+}
+
+.content-tag.personal {
+    background-color: rgba(127, 0, 255, 0.2);
+    color: var(--accent-secondary);
+    border: 1px solid var(--accent-secondary);
+}
+
+.blog-card {
+    position: relative;
+}
     </style>
 </head>
 <body>
@@ -302,7 +356,7 @@
             <div class="project-grid">
                 <div class="project-card">
                     <h3>Threat Intelligence</h3>
-                    <p>Developing advanced predictive models for emerging cyber threats using machine learning and complex data correlation techniques.</p>
+                    <p>Collecting threat intelligence by gathering logs from external sources and hunting for new activities and malware..</p>
                 </div>
                 <div class="project-card">
                     <h3>Malware Reverse Engineering</h3>
@@ -315,53 +369,57 @@
             </div>
         </section>
 
-        <section id="projects" class="section">
-            <h2 class="section-title">Signature Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Quantum Threat Analyzer</h3>
-                    <p>Next-generation malware analysis platform leveraging quantum computing principles to detect and neutralize advanced persistent threats.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Neural Cyber Defense Network</h3>
-                    <p>AI-driven security system that learns and adapts in real-time to evolving cyber threat landscapes.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Global Threat Correlation Engine</h3>
-                    <p>Comprehensive threat intelligence platform providing real-time global cyber threat mapping and predictive analysis.</p>
-                </div>
+<section id="projects" class="section">
+    <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <a href="https://abc.com/projects/" class="section-read-more">View All Projects</a>
+    </div>
+    <div class="project-grid">
+        <div class="project-card">
+            <h3>Quantum Threat Analyzer</h3>
+            <p>Next-generation malware analysis platform leveraging quantum computing principles to detect and neutralize advanced persistent threats.</p>
+        </div>
+    </div>
+</section>
+<section id="research" class="section">
+    <div class="section-header">
+        <h2 class="section-title">Research & Publications</h2>
+        <a href="https://abc.com/research/" class="section-read-more">View All Research</a>
+    </div>
+    <div class="project-grid">
+        <div class="blog-card">
+            <div class="tag-container">
+                <span class="content-tag corporate">Corporate</span>
             </div>
-        </section>
-
-        <section id="research" class="section">
-            <h2 class="section-title">Research & Publications</h2>
-            <div class="project-grid">
-                <div class="blog-card">
-                    <h3>Zero-Day Vulnerability Detection Using Neural Networks</h3>
-                    <div class="blog-meta">Published: March 2, 2025 | Category: Threat Research</div>
-                    <div class="blog-excerpt">
-                        <p>Exploring novel applications of deep learning architectures in identifying previously unknown software vulnerabilities. This research presents a groundbreaking approach that combines static code analysis with dynamic behavioral monitoring to detect potential zero-day exploits before they can be weaponized.</p>
-                    </div>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-                <div class="blog-card">
-                    <h3>Advanced Polymorphic Malware Analysis Techniques</h3>
-                    <div class="blog-meta">Published: February 18, 2025 | Category: Malware Analysis</div>
-                    <div class="blog-excerpt">
-                        <p>An in-depth examination of cutting-edge methods for analyzing shape-shifting malware that evades traditional detection. This paper explores innovative approaches to identifying core behavioral patterns that persist despite sophisticated obfuscation techniques employed by modern threat actors.</p>
-                    </div>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
-                <div class="blog-card">
-                    <h3>Post-Quantum Cryptography: Preparing for the Next Threat Horizon</h3>
-                    <div class="blog-meta">Published: January 24, 2025 | Category: Cryptography</div>
-                    <div class="blog-excerpt">
-                        <p>A comprehensive analysis of quantum-resistant cryptographic algorithms and implementation strategies for critical infrastructure. This research addresses the imminent threat quantum computing poses to current encryption standards and provides a roadmap for organizations to transition to quantum-safe security protocols.</p>
-                    </div>
-                    <a href="#" class="read-more">Read More</a>
-                </div>
+            <h3>BunnyLoader, the newest Malware-as-a-Service</h3>
+            <div class="blog-meta">Published: September 29, 2023 | Category: Threat Research</div>
+            <div class="blog-excerpt">
+                <p>A new Malware-as-a-Service (MaaS) threat called “BunnyLoader” being sold on various forums. BunnyLoader provides various functionalities such as downloading and executing a second-stage payload, stealing browser credentials and system information, and much more. </p>
             </div>
-        </section>
+        </div>
+        <div class="blog-card">
+            <div class="tag-container">
+                <span class="content-tag corporate">Corporate</span>
+            </div>
+            <h3>Hibernating Qakbot: A Comprehensive Study and In-depth Campaign Analysis</h3>
+            <div class="blog-meta">Published: July 25, 2023 | Category: Malware Analysis</div>
+            <div class="blog-excerpt">
+                <p>In the ever-evolving landscape of cyber threats, banking trojans continue to pose a significant risk to organizations worldwide. Among them, Qakbot, also known as QBot or Pinkslipbot, stands out as a highly sophisticated and persistent malware active since 2007, targeting businesses across different countries. With a primary focus on stealing financial data and login credentials from web browsers, Qakbot also serves as a backdoor to inject next-stage payloads like Cobalt Strike and ransomware. </p>
+            </div>
+        </div>
+        <div class="blog-card">
+            <div class="tag-container">
+                <span class="content-tag corporate">Corporate</span>
+            </div>
+            <h3>DBatLoader: Actively Distributing Malwares Targeting European Businesses</h3>
+            <div class="blog-meta">Published: March 27, 2023 | Category: Malware Analysis</div>
+            <div class="blog-excerpt">
+                <p> Identified a new campaign involving DBatLoader also known as ModiLoader that specifically targets manufacturing companies and various businesses in European countries via phishing emails. </p>
+            </div>
+        </div>
+    </div>
+</section>
+        
 
         <footer>
             <div class="social-links">
